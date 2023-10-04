@@ -9,7 +9,7 @@
 💁🏽‍♀️ 202102667 Rhee jeong min <br>
 
 ## 👉🏽 Title
-### Video Calling with Sign language <br>
+Video Calling with Sign language <br>
 
 ## 👉🏽 Background
 - 비디오 화상회의나 영상 통화 등 비대면 소통을 많이 하는 요즘 수화를 사용하는 장애인과 비장애인의 소통을 원활하게 만들어 줄 수 있는 방안이 있을지 생각하게 됨
