@@ -20,4 +20,10 @@ Video Calling with Sign language <br>
 → 수화를 모르는 타인과 농인의 비대면 소통을 원활하게 도와주자 <br>
 → 행동을 많이 해야하는 수어의 특성으로 인해 화면 끊김 현상이 발생할 수 있다. 이를 frame 단위의 interpolation을 통해 개선된 화면을 보여주자 <br>
 
-## Repository
+## Reference
+- https://youtu.be/9qefQBDqN1s?feature=shared
+- https://mail.relaycall.or.kr/user/info/service
+- https://naver.me/x10Q1jC3
+- https://blog.naver.com/storydaejeon/222483150805
+- http://www.ifm.kr/news/305490
+
