@@ -45,7 +45,7 @@ def adjust_gamma(image, gamma=1.0):
 def enhance_and_edge_enhance_image(img):
     gamma = 3.0
     img = adjust_gamma(img, gamma=gamma)
-    
+
     # CLAHE를 적용하여 대비 향상
     lab = cv2.cvtColor(img, cv2.COLOR_BGR2Lab)
     l, a, b = cv2.split(lab)
@@ -53,8 +53,11 @@ def enhance_and_edge_enhance_image(img):
     enhanced_img = cv2.merge((l, a, b))
     enhanced_img = cv2.cvtColor(enhanced_img, cv2.COLOR_Lab2BGR)
 
+    # 노이즈 감소 적용
+    denoised_img = cv2.fastNlMeansDenoisingColored(enhanced_img, None, 10, 10, 7, 21)
+
     # Sobel 필터를 사용하여 에지 강조
-    gray = cv2.cvtColor(enhanced_img, cv2.COLOR_BGR2GRAY)
+    gray = cv2.cvtColor(denoised_img, cv2.COLOR_BGR2GRAY)
     sobelx = cv2.Sobel(gray, cv2.CV_64F, 1, 0, ksize=3)
     sobely = cv2.Sobel(gray, cv2.CV_64F, 0, 1, ksize=3)
     sobel_combined = cv2.magnitude(sobelx, sobely)
@@ -62,10 +65,7 @@ def enhance_and_edge_enhance_image(img):
     # 에지 이미지를 원본 이미지에 오버레이
     sobel_combined = cv2.convertScaleAbs(sobel_combined)
     sobel_colored = cv2.cvtColor(sobel_combined, cv2.COLOR_GRAY2BGR)
-    final_img = cv2.addWeighted(enhanced_img, 0.7, sobel_colored, 0.3, 0)
-    
-    # 노이즈 감소 적용
-    final_img = cv2.fastNlMeansDenoisingColored(final_img, None, 10, 10, 7, 21)
+    final_img = cv2.addWeighted(denoised_img, 0.7, sobel_colored, 0.3, 0)
 
     return final_img
 
@@ -104,7 +104,7 @@ while True:
     # 이미지의 평균 밝기 계산
     avg_brightness = np.mean(img)
 
-    # 밝기가 임계값 이하인 경우에만 향상 및 에지 강조 함수 호출
+    # 밝기가 threshold 이하인 경우에만 향상 및 에지 강조 함수 호출
     if avg_brightness < brightness_threshold:
         img = enhance_and_edge_enhance_image(img)
 
