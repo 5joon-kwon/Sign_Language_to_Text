@@ -1,4 +1,4 @@
-# medical_image_processing
+# Turn on the Light to Sign Language
 2023년 의료영상처리의 이론 및 실습 과목 4조 프로젝트입니다.
 
 ## 👉🏽 Member
